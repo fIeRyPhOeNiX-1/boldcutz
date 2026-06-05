@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Invisible Man | High-Converting Local Ecosystems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05070f;
+      --card-bg: #0d1222;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #a855f7, #3b82f6);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --success: #10b981;
+      --cross: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header styling */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .profile-img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #3b82f6;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta-btn {
+      background: var(--accent-gradient);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+    }
+
+    /* Hero Section with Astronaut Graphic */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-graphic {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 50px rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-tag {
+      background: rgba(168, 85, 247, 0.1);
+      color: #c084fc;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    h1 span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+      max-width: 520px;
+    }
+
+    /* Section Structure */
+    .section-title {
+      text-align: center;
+      margin: 100px 0 50px 0;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Demos Grid & Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 20px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .package-badge {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #3b82f6;
+    }
+
+    /* Highlighting the active target concept */
+    .card.featured-concept {
+      border: 1px solid rgba(229, 193, 88, 0.2);
+    }
+    .card.featured-concept .package-badge {
+      background: rgba(229, 193, 88, 0.1);
+      color: #e5c158;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .card .description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+
+    .demo-btn {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .demo-btn:hover {
+      background: white;
+      color: var(--bg);
+    }
+
+    /* Comparison Matrix Table */
+    .table-wrapper {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.3);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    td {
+      font-size: 0.95rem;
+    }
+
+    .check { color: var(--success); font-weight: bold; }
+    .cross { color: var(--cross); font-weight: bold; }
+
+    /* Contact Block */
+    .contact-card {
+      background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent), var(--card-bg);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 120px 0 80px 0;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-card h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 35px auto;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 880px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 0;
+      }
+      .hero-content p {
+        margin: 0 auto 35px auto;
+      }
+      h1 { font-size: 2.5rem; }
+      .hero-image { max-width: 320px; margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <a href="#" class="brand">
+        <img class="profile-img" src="eSrhaaV9icZPyZJXpCx5mE.jpg" alt="The Invisible Man Logo Source">
+        <span class="logo">The <span>Invisible Man</span></span>
+      </a>
+      <a href="#contact" class="cta-btn">Let's Connect</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-tag">System Architecture & Automation</div>
+        <h1>Websites & Social Blueprints Built To <span>Convert</span></h1>
+        <p>I help local business operators systematically eliminate friction. Stop letting unread Instagram DMs and ghost town Google listings cost you booked clients.</p>
+        <a href="#contact" class="cta-btn">Claim Free Digital Review</a>
+      </div>
+      <div class="hero-graphic">
+        <img class="hero-image" src="Aldrin_Apollo_11_cropped.jpg" alt="The Invisible Man Astronaut Visual Theme">
+      </div>
+    </section>
+
+    <!-- DEMO SHOWCASE SECTION -->
+    <section id="demos">
+      <div class="section-title">
+        <h2>Live Platform Blueprints</h2>
+        <p>Click below to test drive the live high-speed conversion ecosystems built for local niches.</p>
+      </div>
+      
+      <div class="grid">
+        <!-- Demo 1 -->
+        <div class="card">
+          <div>
+            <span class="package-badge">Essential Build</span>
+            <h3>Barber Engine (Basic)</h3>
+            <p class="description">Optimized 1-page digital portal designed exclusively to capture automated client schedules and eliminate administrative WhatsApp lag.</p>
+          </div>
+          <a href="/demos/barber-essential.html" class="demo-btn">Launch Live Demo →</a>
+        </div>
+        
+        <!-- Demo 2: Updated targeting Bold Cuts -->
+        <div class="card featured-concept">
+          <div>
+            <span class="package-badge">Launchpad Build (Case Redesign)</span>
+            <h3>Bold Cuts Lounge (Pro)</h3>
+            <p class="description">Bespoke performance overhaul matching the services of Bold Cuts. Transforms slow layout walls into structured luxury panels, legible typography, and persistent, immediate booking targets.</p>
+          </div>
+          <a href="/demos/bold-cuts.html" class="demo-btn" style="border-color: rgba(229,193,88,0.3); color: #e5c158;">View Case Transformation →</a>
+        </div>
+
+        <!-- Demo 3 -->
+        <div class="card">
+          <div>
+            <span class="package-badge">Growth Retainer</span>
+            <h3>Barber Enterprise (Elite)</h3>
+            <p class="description">The ultimate ecosystem sync. Full platform automation coupled with active short-form media development frameworks for scale operations.</p>
+          </div>
+          <a href="/demos/barber-elite.html" class="demo-btn">Launch Live Demo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRIC MATRIX COMPARISON -->
+    <section>
+      <div class="section-title">
+        <h2>Deployment Options</h2>
+        <p>A transparent breakdown of what each ecosystem tier handles for your brand.</p>
+      </div>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Performance Architecture</th>
+              <th>Essential</th>
+              <th>Launchpad</th>
+              <th>Growth Partner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mobile Funnel Scope</td>
+              <td>1 Custom Page</td>
+              <td>Up to 3 Custom Pages</td>
+              <td>Full Brand Footprint</td>
+            </tr>
+            <tr>
+              <td>Automated Calendar Mechanics</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Google Maps Ranking Core</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Instagram & TikTok Deep-Linking</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Live Social Review Stream</td>
+              <td class="cross">✗</td>
+              <td class="check">✓</td>
+              <td class="check">✓</td>
+            </tr>
+            <tr>
+              <td>Custom Creative Brand Assets</td>
+              <td class="cross">✗</td>
+              <td>5 Strategy Templates</td>
+              <td>Continuous Content Kit</td>
+            </tr>
+            <tr>
+              <td>Short-Form Media Production</td>
+              <td class="cross">✗</td>
+              <td class="cross">✗</td>
+              <td>8 Custom Videos / Mo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTACT BLOCKS -->
+    <section id="contact" class="contact-card">
+      <h2>Let's Systematize Your Lead Flow</h2>
+      <p>Stop leaving your local reach to chance. Send a note over now to audit your current business setup and deploy your new platform engine.</p>
+      <div class="button-group">
+        <a href="https://wa.me/18767739402" class="cta-btn">Message via WhatsApp</a>
+        <a href="mailto:tyetye102006@gmail.com" class="secondary-btn">Inquire via Email</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 The Invisible Man Networks. Built in Montego Bay, Jamaica. All Rights Reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
